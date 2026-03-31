@@ -18,9 +18,12 @@
   --accent-color: #353430;
   --accent-color-hover: rgba(53, 52, 48, 0.4);
 }
+:root.theme-light .rec-label {
+  display: none;
+}
 
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:not(.theme-dark) {
     --page-bg: url("../images/cover-image-light.png");
     --bg-color: #fff1f7;
     --subtitle-color: #353430;
@@ -29,5 +32,8 @@
     --title-decor-color: #ff8dcb;
     --accent-color: #353430;
     --accent-color-hover: rgba(53, 52, 48, 0.4);
+  }
+  :root:not(.theme-dark) .rec-label {
+    display: none;
   }
 }

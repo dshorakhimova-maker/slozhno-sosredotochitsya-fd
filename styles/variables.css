@@ -12,6 +12,8 @@
   --accent-color: #ff0070;
   --accent-color-hover: rgba(255, 0, 112, 0.4);
 
+  --font-size-heading-mobile: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  --font-size-heading-desktop: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   --font-size-base: 18px;
   --line-height-base: 23.4px;
 }

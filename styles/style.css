@@ -1,9 +1,5 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
-:root.theme-light .rec-label {
-  display: none;
-}
-
 .page {
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
   font-family:
@@ -76,11 +72,12 @@
 }
 
 .header__theme-menu-button:hover {
-  border: 1px solid var(--accent-color-hover);
+  outline: 1px solid var(--accent-color-hover);
 }
 
 .header__theme-menu-button_active {
   border: 1px solid var(--accent-color);
+  pointer-events: none;
 }
 
 .header__theme-menu-button:focus-visible {
@@ -91,7 +88,7 @@
 .page__title {
   grid-row: 2;
   grid-column: 1 / span 4;
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem); /* для мобильных */
+  font-size: var(--font-size-heading-mobile);
   color: var(--title-color);
   text-shadow: 4px 4px 0 var(--title-decor-color);
   justify-self: left;
@@ -99,16 +96,17 @@
   line-height: 82.5%;
 }
 
-.page__subtitle {
+.page__subtitle-wrapper {
   grid-row: 3;
   grid-column: 1 / span 4;
   align-self: center;
-  font-size: inherit;
-  color: var(--subtitle-color);
 }
 
 .title-decor {
   background-color: var(--title-decor-color);
+  font-size: var(--font-size-base);
+  color: var(--subtitle-color);
+  font-weight: 700;
 }
 
 .decorated-zone {
@@ -143,18 +141,13 @@
   gap: 50px;
 }
 
-.section-why {
+.content-section {
   display: grid;
   gap: 20px;
 }
 
 .section__title {
   color: var(--accent-color);
-  font-size: inherit;
-}
-
-.section__subtitle {
-  color: var(--subtitle-color);
   font-size: inherit;
 }
 
@@ -176,7 +169,7 @@
 
 .link:focus-visible {
   outline: none;
-  border: 1px solid var(--text-color); /* рамка по всем сторонам при фокусе */
+  outline: 1px solid var(--text-color); /* рамка по всем сторонам при фокусе */
 }
 
 .card {
@@ -185,12 +178,7 @@
   gap: 10px;
 }
 
-.cards-why {
-  display: grid;
-  gap: 20px;
-}
-
-.cards-what {
+.cards {
   display: grid;
   gap: 20px;
 }
@@ -201,29 +189,13 @@
   gap: 10px;
 }
 
-.cards-how {
-  gap: 20px;
-}
-
 .card--inner:last-child {
   margin-bottom: 0; /* убираем отступ у последнего */
 }
 
-.section-what {
+.title-decor-alt {
   display: grid;
-  gap: 20px;
-}
-
-.section-how {
-  display: grid;
-  gap: 20px;
-}
-
-.section__subtitle-alt {
-  display: grid;
-  font-size: inherit;
   font-weight: 400;
-  color: var(--subtitle-color);
 }
 
 .section-images {
@@ -231,13 +203,13 @@
   gap: 10px;
 }
 
-.section__gallery {
+.gallery {
   display: grid;
   width: 100%;
   gap: 10px;
 }
 
-.section__gallery-image {
+.gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover; /* чтобы не искажалась пропорция */
@@ -277,11 +249,7 @@
   }
 
   .page__title {
-    font-size: clamp(
-      7.5rem,
-      0.5625rem + 14.4531vw,
-      9.8125rem
-    ); /* для планшетов и десктопов */
+    font-size: var(--font-size-heading-desktop);
     margin-left: -20px;
   }
 
@@ -289,7 +257,7 @@
     margin: 0;
   }
 
-  .page__subtitle {
+  .page__subtitle-wrapper {
     grid-column: 3 / span 2;
   }
 
@@ -298,24 +266,21 @@
     gap: 80px;
   }
 
-  .section-why {
+  .content-section.section-why,
+  .content-section.section-how {
     grid-template-columns: 236px 1fr;
+  }
+
+  .content-section.section-what {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .cards-why {
     grid-column: 2 / span 2;
   }
 
-  .section-what {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .cards-what {
     grid-column: 1 / span 3;
-  }
-
-  .section-how {
-    grid-template-columns: 236px 1fr;
   }
 
   .cards-how {
@@ -323,42 +288,42 @@
     grid-column: 2;
   }
 
-  .section__gallery {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
   .section-images {
     gap: 20px;
   }
 
-  .section__gallery-image {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .gallery-image {
     width: 100%;
     height: 100%;
     object-fit: cover; /* чтобы не искажалась пропорция */
   }
 
-  .section__gallery-image:nth-child(1) {
+  .gallery-image:nth-child(1) {
     grid-column: span 2;
     grid-row: span 3;
   }
 
-  .section__gallery-image:nth-child(2) {
+  .gallery-image:nth-child(2) {
     grid-column: 3;
     grid-row: span 7;
   }
 
-  .section__gallery-image:nth-child(3) {
+  .gallery-image:nth-child(3) {
     grid-column: 1;
     grid-row: span 9;
   }
 
-  .section__gallery-image:nth-child(4) {
+  .gallery-image:nth-child(4) {
     grid-column: 2;
     grid-row: span 4;
   }
 
-  .section__gallery-image:nth-child(5) {
+  .gallery-image:nth-child(5) {
     grid-column: span 2;
     grid-row: span 5;
   }
@@ -380,44 +345,17 @@
     flex-direction: row;
   }
 
-  .cards-what {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  .cards-row-desktop {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
   }
 
-  .section-how {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .section-why {
+  .content-section.section-how,
+  .content-section.section-why {
     grid-template-columns: repeat(3, 1fr);
   }
 
   .cards-how {
     grid-column: 2 / span 2;
-  }
-
-  .section__gallery-image:nth-child(1) {
-    grid-column: span 2;
-    grid-row: span 3;
-  }
-
-  .section__gallery-image:nth-child(2) {
-    grid-column: 3;
-    grid-row: span 7;
-  }
-
-  .section__gallery-image:nth-child(3) {
-    grid-column: 1;
-    grid-row: span 9;
-  }
-
-  .section__gallery-image:nth-child(4) {
-    grid-column: 2;
-    grid-row: span 4;
-  }
-
-  .section__gallery-image:nth-child(5) {
-    grid-column: span 2;
-    grid-row: span 5;
   }
 }
