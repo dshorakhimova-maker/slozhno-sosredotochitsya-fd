@@ -168,7 +168,6 @@
 }
 
 .link:focus-visible {
-  outline: none;
   outline: 1px solid var(--text-color); /* рамка по всем сторонам при фокусе */
 }
 
